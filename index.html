@@ -22,28 +22,28 @@
             font-size: 1.2em;
             margin-bottom: 20px;
         }
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 75%; /* Adjust this to maintain aspect ratio */
-            height: 0;
-        }
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
 </head>
 <body>
     <div class="vcard">
         <div class="message">Thanks to Guido that stimulated me to create this page.</div>
-        <div class="iframe-container">
-            <iframe src="https://qrco.de/bf5NlL"></iframe>
+        <div id="content">
+            Loading content...
         </div>
     </div>
+
+    <script>
+        async function fetchContent() {
+            try {
+                const response = await fetch('https://qrco.de/bf5NlL');
+                const text = await response.text();
+                document.getElementById('content').innerHTML = text;
+            } catch (error) {
+                document.getElementById('content').innerHTML = 'Failed to load content.';
+            }
+        }
+
+        fetchContent();
+    </script>
 </body>
 </html>
