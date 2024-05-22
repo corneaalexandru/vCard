@@ -14,15 +14,36 @@
             border: 1px solid #ccc;
             padding: 20px;
             display: inline-block;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* Adjust this to maintain aspect ratio */
+            height: 0;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
     <div class="vcard">
-        <h1>Alexandru's vCard</h1>
-        <p>Your perception shapes your interactions, molding who others become. As I, Alexandru, embark on my journey, I leave you with this: may your path be filled with opportunities and the allure of success. Until our paths cross again, stay captivating. Safe travels, Alexandru.</p>
-        <p>Scan the QR code below:</p>
-        <img src="qr-code.png" alt="QR Code">
+        <div class="message">Thanks to Guido that stimulated me to create this page.</div>
+        <div class="iframe-container">
+            <iframe src="https://qrco.de/bf5NlL"></iframe>
+        </div>
     </div>
 </body>
 </html>
