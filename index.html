@@ -22,11 +22,20 @@
             font-size: 1.2em;
             margin-bottom: 20px;
         }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
     </style>
 </head>
 <body>
     <div class="vcard">
         <div class="message">Thanks to Guido that stimulated me to create this page.</div>
+        <div class="image-container">
+            <img src="data:image/png;base64,{{imageData}}" alt="Alexandru">
+        </div>
         <div id="content">
             Loading content...
         </div>
