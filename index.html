@@ -4,37 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexandru Cornea - Digital Business Card</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .card {
-            background-color: #ffffff;
+            background-color: #fff;
             max-width: 600px;
-            margin: 20px auto;
+            margin: 20px;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
         .logo {
             width: 100px;
             margin-bottom: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .logo img {
+            width: 100%;
+            height: auto;
         }
         .contact-info {
             margin: 20px 0;
         }
         .contact-info div {
             margin: 10px 0;
+            font-size: 18px;
+        }
+        .contact-info a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
         .social-media a {
             margin: 0 10px;
             text-decoration: none;
+            color: #007BFF;
+            font-size: 24px;
         }
-        .download-vcard,
-        .share-page {
+        .social-media a:hover {
+            color: #0056b3;
+        }
+        .button {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
@@ -44,15 +68,16 @@
             border-radius: 5px;
             max-width: 200px;
         }
-        .download-vcard:hover,
-        .share-page:hover {
+        .button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <img src="logo.png" alt="Alexandru Cornea Logo" class="logo">
+        <div class="logo">
+            <img src="https://via.placeholder.com/100" alt="Alexandru Cornea Logo">
+        </div>
         <h1>Alexandru Cornea</h1>
         <div class="contact-info">
             <div>
@@ -75,14 +100,14 @@
             </div>
         </div>
         <div class="social-media">
-            <a href="https://alexandru-cornea.com"><img src="web-icon.png" alt="Website"></a>
-            <a href="https://www.facebook.com/alexandru.cornea"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="https://twitter.com/alexandru_cornea"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="https://wa.me/31613759195"><img src="whatsapp-icon.png" alt="WhatsApp"></a>
-            <a href="skype:live:corneaalexandru"><img src="skype-icon.png" alt="Skype"></a>
+            <a href="https://alexandru-cornea.com" aria-label="Website"><i class="fas fa-globe"></i></a>
+            <a href="https://www.facebook.com/alexandru.cornea" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/alexandru_cornea" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://wa.me/31613759195" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="skype:live:corneaalexandru" aria-label="Skype"><i class="fab fa-skype"></i></a>
         </div>
-        <a href="vcard.vcf" class="download-vcard">Download vCard</a>
-        <a href="https://qrco.de/bf5NlL" class="share-page">Share this Page</a>
+        <a href="vcard.vcf" class="button">Download vCard</a>
+        <a href="https://qrco.de/bf5NlL" class="button">Share this Page</a>
     </div>
 </body>
 </html>
