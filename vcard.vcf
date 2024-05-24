@@ -5,28 +5,24 @@ N:Cornea;Alexandru;;;
 FN:Alexandru Cornea
 ORG:Industrial EPC Projects;
 TITLE:Construction Professional
-item1.EMAIL;type=INTERNET;type=pref:corneaalexandru@gmail.com
+item1.EMAIL;type=INTERNET;type=pref:contact@alexandru-cornea.com
 item1.X-ABLabel:_$!<Other>!$_
-item2.EMAIL;type=INTERNET:contact@alexandru-cornea.com
+item2.EMAIL;type=INTERNET:corneaalexandru@gmail.com
 item2.X-ABLabel:_$!<Other>!$_
 item3.EMAIL;type=INTERNET:corneaalexandru@icloud.com
 item3.X-ABLabel:_$!<Other>!$_
-TEL;type=CELL;type=VOICE;type=pref:+31 6 13 75 91 95
+TEL;type=CELL;type=VOICE;type=pref:+31613759195
 TEL;type=CELL;type=VOICE:+40758492633
-item4.ADR;type=HOME;type=pref:;;Mauritsweg\n42;JV;;3012;Netherlands
-item4.X-ABADR:nl
-item5.ADR;type=WORK:;;Europaweg\n950;Maasvlakte;;3199;Netherlands
-item5.X-ABADR:nl
 X-SOCIALPROFILE;type=twitter:http://twitter.com/corneaalexandru
 X-SOCIALPROFILE;type=facebook:http://facebook.com/corneaalexandru
 X-SOCIALPROFILE;type=linkedin:http://www.linkedin.com/in/alexandrucornea
-item6.URL;type=pref:https://www.alexandru-cornea.com
-item6.X-ABLabel:_$!<HomePage>!$_
+item4.URL;type=pref:https://www.alexandru-cornea.com
+item4.X-ABLabel:_$!<HomePage>!$_
 BDAY:1990-04-22
-item7.IMPP;X-SERVICE-TYPE=Facebook;type=pref:xmpp:corneaalexandru
-item7.X-ABLabel:_$!<Other>!$_
-item8.IMPP;X-SERVICE-TYPE=Skype:skype:corneaalexandru
-item8.X-ABLabel:_$!<Other>!$_
+item5.IMPP;X-SERVICE-TYPE=Facebook;type=pref:xmpp:corneaalexandru
+item5.X-ABLabel:_$!<Other>!$_
+item6.IMPP;X-SERVICE-TYPE=Skype:skype:corneaalexandru
+item6.X-ABLabel:_$!<Other>!$_
 PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAASABIAAD/4QBARXhpZgAATU0AKgAA
  AAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAB9KADAAQAAAABAAAB9AAAAAD/7QA4UG
  hvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/+IP
