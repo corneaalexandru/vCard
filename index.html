@@ -13,15 +13,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .card {
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 300px;
+            max-width: 600px;
             width: 100%;
+            text-align: left;
         }
         .card img {
             width: auto;
@@ -32,17 +34,21 @@
         .card h1 {
             margin: 0;
             font-size: 24px;
+            text-align: left;
         }
         .card p {
             color: #555;
             margin: 5px 0;
+            text-align: left;
         }
         .card a {
             color: #007bff;
             text-decoration: none;
+            text-align: left;
         }
         .buttons {
             margin-top: 20px;
+            text-align: left;
         }
         .buttons a {
             display: inline-block;
@@ -52,15 +58,18 @@
             color: #fff;
             border-radius: 5px;
             text-decoration: none;
+            text-align: left;
         }
         .social-links {
             margin-top: 20px;
+            text-align: left;
         }
         .social-links a {
-            margin: 0 10px;
+            margin: 0 10px 10px 0;
             color: #555;
             text-decoration: none;
             display: inline-block;
+            text-align: left;
         }
         .social-links a:hover {
             color: #007bff;
@@ -69,12 +78,15 @@
             width: 24px;
             height: 24px;
         }
+        .logo {
+            opacity: 0.5;
+            display: block;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Change is the heartbeat of progress. Without adaptation, we stagnate. Embrace new ideas and stay flexible. Every change brings us closer to new opportunities and success!</h1>
-        <img src="logo/logoAC.png" alt="Alexandru Cornea" style="opacity: 0.5;">         
+    <div class="card">     
         <div class="social-links">
             <a href="https://www.alexandru-cornea.com" target="_blank"><img src="icons/www-icon.png" alt="Personal Website"></a>
             <a href="mailto:contact@alexandru-cornea.com"><img src="icons/email-icon.png" alt="Email contact@alexandru-cornea.com"></a>
@@ -86,6 +98,8 @@
             <a href="https://wa.me/31613759195" target="_blank"><img src="icons/w-icon.png" alt="WhatsApp"></a>
             <a href="vcard.vcf" target="_blank"><img src="icons/c-icon.png" alt="Download vCard Alexandru Cornea"></a>
         </div>
+        <img src="logo/logoAC.png" alt="Alexandru Cornea" class="logo">
+        <h1>Change is the heartbeat of progress. Without adaptation, we stagnate. Embrace new ideas and stay flexible. Every change brings us closer to new opportunities and success!</h1>
     </div>
 </body>
 </html>
