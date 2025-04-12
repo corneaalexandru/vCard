@@ -1,3 +1,3 @@
 # vCard
 Alexandru Cornea
-Personal Contact Details
+Contact Details
