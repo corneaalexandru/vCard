@@ -314,13 +314,6 @@
             border-top: 1px solid var(--border-color);
         }
 
-        .qr-title {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--text-color);
-            margin-bottom: 15px;
-        }
-
         #qrcode {
             margin-bottom: 10px;
             transition: var(--transition);
@@ -395,31 +388,37 @@
         <div class="card-body">
           <div class="contact-info">
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Email</h3>
-                        <p>contact@alexandru-cornea.com</p>
-                    </div>
+                    <a href="mailto:contact@alexandru-cornea.com" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>contact@alexandru-cornea.com</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Phone</h3>
-                        <p>(+971) 505 740 512</p>
-                    </div>
+                    <a href="tel:+971505740512" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>(+971) 505 740 512</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>LinkedIn</h3>
-                        <p>linkedin.com/in/alexandrucornea</p>
-                    </div>
+                    <a href="https://linkedin.com/in/alexandrucornea" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/alexandrucornea</p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -427,6 +426,7 @@
                 <a href="mailto:contact@alexandru-cornea.com" class="action-button">
                     <i class="fas fa-paper-plane"></i>
                     Contact Me
+                </a>
                 
                 <a href="AC.vcf" download class="action-button secondary">
                     <i class="fas fa-address-card"></i>
@@ -436,7 +436,6 @@
         </div>
 
         <div class="qr-section">
-            <h2 class="qr-title">Scan to Connect</h2>
             <div id="qrcode"></div>
             <p class="qr-instruction">Scan with your phone to visit my website</p>
         </div>
