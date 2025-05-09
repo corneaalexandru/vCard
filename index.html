@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandru Cornea | Technical Expert</title>
+    <title>Alexandru Cornea</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -207,6 +207,36 @@
             background-color: #bfdbfe;
         }
 
+        .qr-section {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .qr-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        #qrcode {
+            margin-bottom: 10px;
+        }
+
+        #qrcode img {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-instruction {
+            font-size: 13px;
+            color: var(--light-text);
+            font-weight: 400;
+        }
+
         footer {
             padding: 20px;
             text-align: center;
@@ -309,9 +339,30 @@
             </div>
         </div>
 
+        <div class="qr-section">
+            <h3 class="qr-title">Scan to visit my website</h3>
+            <div id="qrcode"></div>
+            <p class="qr-instruction">Use your phone camera to scan</p>
+        </div>
+
         <footer>
             <p>&copy; 2025 Alexandru Cornea. Updated May 9, 2025.</p>
         </footer>
     </div>
 </body>
+<script src="js/qrcode.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create QR code that redirects to the website
+        const websiteUrl = 'https://www.alexandru-cornea.com';
+        new QRCode(document.getElementById("qrcode"), {
+            text: websiteUrl,
+            width: 150,
+            height: 150,
+            colorDark: "#2563eb",  // Using the primary color
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    });
+</script>
 </html>
