@@ -3,81 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandru Cornea</title>
+    <title>Alexandru Cornea | Technical Expert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #334155;
+            --light-text: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --accent-color: #dbeafe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 20px;
         }
-        .card {
+
+        .business-card {
+            width: 100%;
+            max-width: 400px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .business-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            padding: 30px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background-color: var(--primary-color);
+            transform: skewY(-2deg);
+            z-index: 0;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            z-index: 1;
+            background-color: white;
+            padding: 2px;
+        }
+
+        .user-info {
+            z-index: 1;
+        }
+
+        .user-info h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .user-info p {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .user-quote {
+            font-style: italic;
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .card-body {
+            padding: 30px 25px 20px;
+        }
+
+        .contact-info {
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .contact-icon img {
+            width: 20px;
+            height: auto;
+        }
+
+        .contact-icon i {
+            font-size: 16px;
+        }
+
+        .contact-details {
+            flex-grow: 1;
+        }
+
+        .contact-details h3 {
+            font-size: 13px;
+            color: var(--light-text);
+            font-weight: 500;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-details p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .action-button.secondary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .action-button.secondary:hover {
+            background-color: #bfdbfe;
+        }
+
+        footer {
             padding: 20px;
             text-align: center;
-            max-width: 300px;
-            width: 100%;
+            font-size: 12px;
+            color: var(--light-text);
+            border-top: 1px solid var(--border-color);
         }
-        .card img {
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
-        .card h1 {
-            margin: 0;
-            font-size: 24px;
-            color: #333;
-        }
-        .card p {
-            color: #555;
-            margin: 5px 0;
-        }
-        .card a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        .buttons a {
-            display: inline-block;
-            margin: 5px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .social-links {
-            margin-top: 20px;
-        }
-        .social-links a {
-            margin: 0 10px;
-            color: #555;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .social-links a:hover {
-            color: #007bff;
-        }
-        .social-links img {
-            width: 32px;
-            height: 32px;
-            filter: none; /* Remove any filters */
-            opacity: 1; /* Full opacity */
+
+        @media (max-width: 480px) {
+            .business-card {
+                border-radius: 12px;
+            }
+
+            .card-header {
+                padding: 25px 20px;
+            }
+
+            .card-body {
+                padding: 25px 20px 15px;
+            }
+
+            .profile-image {
+                width: 70px;
+                height: 70px;
+            }
+
+            .user-info h1 {
+                font-size: 20px;
+            }
+
+            .user-info p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <img src="logo/logoAC.png" alt="Alexandru Cornea">    
-        <div class="social-links">
-            <a href="mailto:contact@alexandru-cornea.com?subject=Hello Alexandru&body=Hi Alexandru,%0D%0A%0D%0AI would like to connect with you.%0D%0A%0D%0ABest regards,"><img src="icons/email-icon.png" alt="Email contact@alexandru-cornea.com"></a>
-            <a href="https://wa.me/+971505740512?text=Hi Alexandru, I would like to connect with you." target="_blank"><img src="icons/w-icon.png" alt="WhatsApp"></a>
+    <div class="business-card">
+        <div class="card-header">
+            <img src="logo/logoAC.png" alt="Alexandru Cornea" class="profile-image">
+            <div class="user-info">
+                <h1>Alexandru Cornea</h1>
+                <p>Technical Expert</p>
+                <div class="user-quote">"Change is the heartbeat of progress."</div>
+            </div>
         </div>
+
+        <div class="card-body">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>contact@alexandru-cornea.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p>+971 50 574 0512</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>LinkedIn</h3>
+                        <p>linkedin.com/in/alexandrucornea</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Website</h3>
+                        <p>www.alexandru-cornea.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="vcard.vcf" download class="action-button">
+                    <i class="fas fa-address-card"></i>
+                    Save Contact
+                </a>
+                <a href="https://wa.me/+971505740512?text=Hi Alexandru, I would like to connect with you." target="_blank" class="action-button secondary">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Alexandru Cornea. Updated May 9, 2025.</p>
+        </footer>
     </div>
 </body>
 </html>
