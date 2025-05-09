@@ -18,6 +18,19 @@
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
             --accent-color: #dbeafe;
+            --success-color: #22c55e;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --text-color: #e2e8f0;
+            --light-text: #94a3b8;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --accent-color: #1e40af;
         }
 
         * {
@@ -35,6 +48,20 @@
             min-height: 100vh;
             color: var(--text-color);
             padding: 20px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: var(--transition);
         }
 
         .business-card {
@@ -43,19 +70,25 @@
             background-color: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: var(--transition);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .business-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .card-header {
             padding: 30px 25px;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             display: flex;
             align-items: center;
@@ -70,7 +103,7 @@
             left: 0;
             right: 0;
             height: 30px;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             transform: skewY(-2deg);
             z-index: 0;
         }
@@ -84,6 +117,11 @@
             z-index: 1;
             background-color: white;
             padding: 2px;
+            transition: var(--transition);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
         }
 
         .user-info {
@@ -113,6 +151,39 @@
             padding: 30px 25px 20px;
         }
 
+        .skills-section {
+            margin-bottom: 25px;
+        }
+
+        .skills-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .skill-item {
+            background-color: var(--accent-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--primary-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         .contact-info {
             margin-bottom: 25px;
         }
@@ -124,6 +195,11 @@
             margin-bottom: 16px;
             padding-bottom: 16px;
             border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
         }
 
         .contact-item:last-child {
@@ -142,15 +218,11 @@
             justify-content: center;
             border-radius: 50%;
             flex-shrink: 0;
+            transition: var(--transition);
         }
 
-        .contact-icon img {
-            width: 20px;
-            height: auto;
-        }
-
-        .contact-icon i {
-            font-size: 16px;
+        .contact-item:hover .contact-icon {
+            transform: rotate(360deg);
         }
 
         .contact-details {
@@ -168,6 +240,32 @@
         .contact-details p {
             font-size: 14px;
             font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .action-buttons {
@@ -189,7 +287,7 @@
             border-radius: 8px;
             font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: var(--transition);
             text-decoration: none;
             font-size: 14px;
         }
@@ -200,7 +298,8 @@
         }
 
         .action-button:hover {
-            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .action-button.secondary:hover {
@@ -224,6 +323,11 @@
 
         #qrcode {
             margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        #qrcode:hover {
+            transform: scale(1.05);
         }
 
         #qrcode img {
@@ -249,42 +353,58 @@
             .business-card {
                 border-radius: 12px;
             }
-
+            
             .card-header {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
-
-            .card-body {
-                padding: 25px 20px 15px;
-            }
-
+            
             .profile-image {
-                width: 70px;
-                height: 70px;
+                width: 60px;
+                height: 60px;
             }
-
+            
             .user-info h1 {
-                font-size: 20px;
+                font-size: 18px;
             }
-
+            
             .user-info p {
                 font-size: 14px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <div class="business-card">
         <div class="card-header">
-            <img src="logo/logoAC.png" alt="Alexandru Cornea" class="profile-image">
+            <img src="https://avatars.githubusercontent.com/u/12345678" alt="Profile" class="profile-image">
             <div class="user-info">
                 <h1>Alexandru Cornea</h1>
-                <p>Technical Expert</p>
-                <div class="user-quote">"Change is the heartbeat of progress."</div>
+                <p>Software Engineer</p>
+                <p class="user-quote">"Building the future, one line of code at a time"</p>
             </div>
         </div>
 
         <div class="card-body">
+            <div class="skills-section">
+                <h2 class="skills-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">React</div>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">AWS</div>
+                    <div class="skill-item">Docker</div>
+                </div>
+            </div>
+
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-icon">
@@ -295,74 +415,98 @@
                         <p>contact@alexandru-cornea.com</p>
                     </div>
                 </div>
-
                 <div class="contact-item">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
                     <div class="contact-details">
                         <h3>Phone</h3>
-                        <p>+971 50 574 0512</p>
+                        <p>(+971) 505 740 512</p>
                     </div>
                 </div>
-
                 <div class="contact-item">
                     <div class="contact-icon">
-                        <i class="fab fa-linkedin-in"></i>
+                        <i class="fab fa-linkedin"></i>
                     </div>
                     <div class="contact-details">
                         <h3>LinkedIn</h3>
                         <p>linkedin.com/in/alexandrucornea</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Website</h3>
-                        <p>www.alexandru-cornea.com</p>
-                    </div>
-                </div>
+            <div class="social-links">
+                <a href="https://github.com/yourusername" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/yourusername" class="social-link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
 
             <div class="action-buttons">
-                <a href="vcard.vcf" download class="action-button">
-                    <i class="fas fa-address-card"></i>
-                    Save Contact
+                <a href="mailto:contact@alexandru-cornea.com" class="action-button">
+                    <i class="fas fa-paper-plane"></i>
+                    Contact Me
                 </a>
-                <a href="https://wa.me/+971505740512?text=Hi Alexandru, I would like to connect with you." target="_blank" class="action-button secondary">
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp
+                <a href="https://www.linkedin.com/in/alexandrucornea/" class="action-button secondary" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
                 </a>
             </div>
         </div>
 
         <div class="qr-section">
-            <h3 class="qr-title">Scan to visit my website</h3>
+            <h2 class="qr-title">Scan to Connect</h2>
             <div id="qrcode"></div>
-            <p class="qr-instruction">Use your phone camera to scan</p>
+            <p class="qr-instruction">Scan with your phone to visit my website</p>
         </div>
 
         <footer>
-            <p>&copy; 2025 Alexandru Cornea. Updated May 9, 2025.</p>
+            <p>© 2024 Alexandru Cornea. All rights reserved.</p>
         </footer>
     </div>
-</body>
-<script src="js/qrcode.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Create QR code that redirects to the website
-        const websiteUrl = 'https://www.alexandru-cornea.com';
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
-            text: websiteUrl,
-            width: 150,
-            height: 150,
-            colorDark: "#2563eb",  // Using the primary color
+            text: window.location.href,
+            width: 128,
+            height: 128,
+            colorDark: "#2563eb",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
         });
-    });
-</script>
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            }
+        }
+
+        // Add hover effect to skills
+        document.querySelectorAll('.skill-item').forEach(skill => {
+            skill.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            skill.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
 </html>
