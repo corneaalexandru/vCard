@@ -108,20 +108,26 @@
             z-index: 0;
         }
 
-        .profile-image {
+        .profile-image-container {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid white;
             z-index: 1;
             background-color: white;
+            border: 3px solid white;
             padding: 2px;
             transition: var(--transition);
         }
 
-        .profile-image:hover {
+        .profile-image-container:hover {
             transform: scale(1.05);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
         }
 
         .user-info {
@@ -338,7 +344,7 @@
                 padding: 20px 15px;
             }
             
-            .profile-image {
+            .profile-image-container {
                 width: 60px;
                 height: 60px;
             }
@@ -364,7 +370,9 @@
 
     <div class="business-card">
         <div class="card-header">
-            <img src="logo/logoAC.png" alt="Alexandru Cornea" class="profile-image" style="object-fit: contain; filter: invert(40%) sepia(79%) saturate(1800%) hue-rotate(205deg) brightness(95%) contrast(95%);">
+            <div class="profile-image-container" style="width: 80px; height: 80px; border-radius: 50%; background-color: white; border: 3px solid white; z-index: 1; padding: 2px; transition: var(--transition);">
+                <img src="logo/logoAC.png" alt="Alexandru Cornea" class="profile-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%; filter: brightness(0) saturate(100%) invert(37%) sepia(92%) saturate(2152%) hue-rotate(211deg) brightness(101%) contrast(101%);">
+            </div>
             <div class="user-info">
                 <h1>Alexandru Cornea</h1>
                 <p>Technical Expert</p>
