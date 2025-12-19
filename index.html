@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,27 +11,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --text-color: #334155;
-            --light-text: #64748b;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --accent-color: #dbeafe;
-            --success-color: #22c55e;
-            --transition: all 0.3s ease;
+            --bg: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --border: #eeeeee;
+            --surface: #ffffff;
+            --accent: #000000;
+            --transition-snap: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         [data-theme="dark"] {
-            --primary-color: #3b82f6;
-            --secondary-color: #60a5fa;
-            --text-color: #e2e8f0;
-            --light-text: #94a3b8;
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --border-color: #334155;
-            --accent-color: #1e40af;
+            --bg: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #999999;
+            --border: #222222;
+            --surface: #000000;
+            --accent: #ffffff;
         }
 
         * {
@@ -40,329 +36,200 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: var(--text-color);
-            padding: 20px;
-            transition: var(--transition);
+            color: var(--text-primary);
+            padding: 24px;
+            transition: background-color 0.4s ease;
         }
 
         .theme-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 8px;
-            border-radius: 50%;
+            top: 32px;
+            right: 32px;
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            color: var(--text-color);
-            transition: var(--transition);
+            color: var(--text-primary);
+            transition: var(--transition-snap);
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--text-primary);
         }
 
         .business-card {
             width: 100%;
-            max-width: 400px;
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            position: relative;
-            transition: var(--transition);
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .business-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            max-width: 440px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 56px 40px;
+            transition: var(--transition-snap);
         }
 
         .card-header {
-            padding: 30px 25px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-        }
-
-        .card-header::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            transform: skewY(-2deg);
-            z-index: 0;
+            margin-bottom: 48px;
+            text-align: left;
         }
 
         .profile-image-container {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            z-index: 1;
-            background-color: white;
-            border: 3px solid white;
-            padding: 2px;
-            transition: var(--transition);
-        }
-
-        .profile-image-container:hover {
-            transform: scale(1.05);
+            width: 48px;
+            height: 48px;
+            margin-bottom: 24px;
         }
 
         .profile-image {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: contain;
+            filter: grayscale(1);
         }
 
-        .user-info {
-            z-index: 1;
+        [data-theme="dark"] .profile-image {
+            filter: grayscale(1) invert(1);
         }
 
         .user-info h1 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
         }
 
         .user-info p {
-            font-size: 16px;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 400;
         }
 
-        .card-body {
-            padding: 30px 25px 20px;
-        }
-
-        .skills-section {
-            margin-bottom: 25px;
-        }
-
-        .skills-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .skill-item {
-            background-color: var(--accent-color);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            color: var(--primary-color);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .skill-item:hover {
-            transform: translateY(-2px);
-            background-color: var(--primary-color);
-            color: white;
+        .about-text {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: var(--text-primary);
         }
 
         .contact-info {
-            margin-bottom: 25px;
+            display: grid;
+            gap: 16px;
+            margin-bottom: 40px;
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: baseline;
             gap: 12px;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+            width: fit-content;
+            transition: border-color 0.2s ease;
         }
 
         .contact-item:hover {
-            transform: translateX(5px);
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+            border-color: var(--text-primary);
         }
 
         .contact-icon {
-            width: 36px;
-            height: 36px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            flex-shrink: 0;
-            transition: var(--transition);
-        }
-
-        .contact-item:hover .contact-icon {
-            transform: rotate(360deg);
-        }
-
-        .contact-details {
-            flex-grow: 1;
-        }
-
-        .contact-details h3 {
-            font-size: 13px;
-            color: var(--light-text);
-            font-weight: 500;
-            margin-bottom: 2px;
-            text-transform: uppercase;
+            font-size: 14px;
+            color: var(--text-secondary);
+            width: 16px;
         }
 
         .contact-details p {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
-        .social-links {
+        .skills-grid {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 48px;
         }
 
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            background-color: var(--primary-color);
-            color: white;
+        .skill-item {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
         }
 
         .action-buttons {
             display: flex;
-            gap: 10px;
-            margin-top: 30px;
+            gap: 16px;
         }
 
         .action-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-            gap: 8px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
             padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
             font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition-snap);
+            border-radius: 4px;
+        }
+
+        .action-button.primary {
+            background: var(--text-primary);
+            color: var(--bg);
+            border: 1px solid var(--text-primary);
         }
 
         .action-button.secondary {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
         }
 
         .action-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .action-button.secondary:hover {
-            background-color: #bfdbfe;
+            opacity: 0.8;
         }
 
         .qr-section {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-top: 1px solid var(--border-color);
+            margin-top: 56px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
         }
 
         #qrcode {
-            margin-bottom: 10px;
-            transition: var(--transition);
+            display: inline-block;
+            filter: grayscale(1);
         }
 
-        #qrcode:hover {
-            transform: scale(1.05);
-        }
-
-        #qrcode img {
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        [data-theme="dark"] #qrcode {
+            filter: grayscale(1) invert(1);
         }
 
         footer {
-            padding: 20px;
-            text-align: center;
+            margin-top: 40px;
             font-size: 12px;
-            color: var(--light-text);
-            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            text-align: left;
         }
 
         @media (max-width: 480px) {
             .business-card {
-                border-radius: 12px;
+                padding: 40px 24px;
+                border: none;
             }
-            
-            .card-header {
-                padding: 20px 15px;
-            }
-            
-            .profile-image-container {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .user-info h1 {
-                font-size: 18px;
-            }
-            
-            .user-info p {
-                font-size: 14px;
-            }
-            
+
             .action-buttons {
                 flex-direction: column;
             }
         }
     </style>
 </head>
+
 <body>
     <button class="theme-toggle" onclick="toggleTheme()">
         <i class="fas fa-moon"></i>
@@ -370,62 +237,30 @@
 
     <div class="business-card">
         <div class="card-header">
-            <div class="profile-image-container" style="width: 80px; height: 80px; border-radius: 50%; background-color: white; border: 3px solid white; z-index: 1; padding: 2px; transition: var(--transition);">
-                <img src="logo/logoAC.png" alt="Alexandru Cornea" class="profile-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%; filter: brightness(0) saturate(100%) invert(37%) sepia(92%) saturate(2152%) hue-rotate(211deg) brightness(101%) contrast(101%);">
-            </div>
             <div class="user-info">
                 <h1>Alexandru Cornea</h1>
-                <p>Technical Expert</p>
             </div>
         </div>
 
         <div class="card-body">
-          <div class="contact-info">
-                <div class="contact-item">
-                    <a href="mailto:contact@alexandru-cornea.com" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>contact@alexandru-cornea.com</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <a href="tel:+971505740512" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>(+971) 505 740 512</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <a href="https://linkedin.com/in/alexandrucornea" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>LinkedIn</h3>
-                            <p>linkedin.com/in/alexandrucornea</p>
-                        </div>
-                    </a>
-                </div>
+            <p class="about-text">I specialize in turning extreme technical complexity into disciplined, scalable
+                execution.</p>
+            <div class="contact-info">
+                <a href="mailto:contact@alexandru-cornea.com" class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-details">
+                        <p>contact@alexandru-cornea.com</p>
+                    </div>
+                </a>
+                <a href="https://linkedin.com/in/alexandrucornea" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <div class="contact-details">
+                        <p>linkedin.com/in/alexandrucornea</p>
+                    </div>
+                </a>
             </div>
-
             <div class="action-buttons">
-                <a href="mailto:contact@alexandru-cornea.com" class="action-button">
-                    <i class="fas fa-paper-plane"></i>
-                    Contact Me
-                </a>
-                
-                <a href="AC.vcf" download class="action-button secondary">
-                    <i class="fas fa-address-card"></i>
-                    Contact Card
-                </a>
+                <a href="mailto:contact@alexandru-cornea.com" class="action-button primary">Email</a>
             </div>
         </div>
 
@@ -434,7 +269,7 @@
         </div>
 
         <footer>
-            <p>Change is the heartbeat of progress.</p>
+            <p>Order creates leverage, and change creates opportunity.</p>
         </footer>
     </div>
 
@@ -442,10 +277,10 @@
     <script>
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
-            text: window.location.href,
+            text: "https://linkedin.com/in/alexandrucornea",
             width: 256,
             height: 256,
-            colorDark: "#2563eb",
+            colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
         });
@@ -454,7 +289,7 @@
         function toggleTheme() {
             const body = document.body;
             const themeToggle = document.querySelector('.theme-toggle i');
-            
+
             if (body.getAttribute('data-theme') === 'dark') {
                 body.removeAttribute('data-theme');
                 themeToggle.classList.remove('fa-sun');
@@ -465,16 +300,7 @@
                 themeToggle.classList.add('fa-sun');
             }
         }
-
-        // Add hover effect to skills
-        document.querySelectorAll('.skill-item').forEach(skill => {
-            skill.addEventListener('mouseover', function() {
-                this.style.transform = 'translateY(-2px)';
-            });
-            skill.addEventListener('mouseout', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
     </script>
 </body>
+
 </html>
