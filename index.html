@@ -29,6 +29,17 @@
             --accent: #ffffff;
         }
 
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #000000;
+                --text-primary: #ffffff;
+                --text-secondary: #999999;
+                --border: #222222;
+                --surface: #000000;
+                --accent: #ffffff;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -218,13 +229,24 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding: 16px;
+                align-items: flex-start;
+            }
+
             .business-card {
                 padding: 40px 24px;
-                border: none;
+                border: 1px solid var(--border);
+                margin-top: 40px;
             }
 
             .action-buttons {
                 flex-direction: column;
+            }
+
+            .theme-toggle {
+                top: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -278,27 +300,66 @@
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
             text: "https://linkedin.com/in/alexandrucornea",
-            width: 256,
-            height: 256,
+            width: 150,
+            height: 150,
             colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
         });
 
-        // Theme Toggle
-        function toggleTheme() {
-            const body = document.body;
-            const themeToggle = document.querySelector('.theme-toggle i');
+        // Theme Handling
+        const body = document.body;
+        const themeToggleIcon = document.querySelector('.theme-toggle i');
 
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                themeToggle.classList.remove('fa-sun');
-                themeToggle.classList.add('fa-moon');
-            } else {
+        function setTheme(theme) {
+            if (theme === 'dark') {
                 body.setAttribute('data-theme', 'dark');
-                themeToggle.classList.remove('fa-moon');
-                themeToggle.classList.add('fa-sun');
+                themeToggleIcon.classList.remove('fa-moon');
+                themeToggleIcon.classList.add('fa-sun');
+            } else if (theme === 'light') {
+                body.setAttribute('data-theme', 'light');
+                themeToggleIcon.classList.remove('fa-sun');
+                themeToggleIcon.classList.add('fa-moon');
+            } else {
+                body.removeAttribute('data-theme');
+                updateIconForSystemTheme();
             }
+        }
+
+        function updateIconForSystemTheme() {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeToggleIcon.classList.remove('fa-moon');
+                themeToggleIcon.classList.add('fa-sun');
+            } else {
+                themeToggleIcon.classList.remove('fa-sun');
+                themeToggleIcon.classList.add('fa-moon');
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = body.getAttribute('data-theme');
+            const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (currentTheme === 'dark') {
+                setTheme('light');
+            } else if (currentTheme === 'light') {
+                setTheme('dark');
+            } else {
+                // Currently system
+                setTheme(isSystemDark ? 'light' : 'dark');
+            }
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!body.getAttribute('data-theme')) {
+                updateIconForSystemTheme();
+            }
+        });
+
+        // Initialize icon
+        if (!body.getAttribute('data-theme')) {
+            updateIconForSystemTheme();
         }
     </script>
 </body>
