@@ -129,36 +129,34 @@
         }
 
         .contact-info {
-            display: grid;
-            gap: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
             margin-bottom: 40px;
         }
 
         .contact-item {
             display: flex;
-            align-items: baseline;
-            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
             text-decoration: none;
-            color: inherit;
-            padding: 4px 0;
-            border-bottom: 1px solid transparent;
-            width: fit-content;
-            transition: border-color 0.2s ease;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            transition: var(--transition-snap);
         }
 
         .contact-item:hover {
             border-color: var(--text-primary);
+            background: var(--text-primary);
+            color: var(--bg);
         }
 
         .contact-icon {
-            font-size: 14px;
-            color: var(--text-secondary);
-            width: 16px;
-        }
-
-        .contact-details p {
-            font-size: 14px;
-            font-weight: 400;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .skills-grid {
@@ -268,17 +266,14 @@
             <p class="about-text">I specialize in turning extreme technical complexity into disciplined, scalable
                 execution.</p>
             <div class="contact-info">
-                <a href="mailto:contact@alexandru-cornea.com" class="contact-item">
+                <a href="mailto:contact@alexandru-cornea.com" class="contact-item" title="Email">
                     <i class="fas fa-envelope contact-icon"></i>
-                    <div class="contact-details">
-                        <p>contact@alexandru-cornea.com</p>
-                    </div>
                 </a>
-                <a href="https://linkedin.com/in/alexandrucornea" target="_blank" class="contact-item">
+                <a href="https://linkedin.com/in/alexandrucornea" target="_blank" class="contact-item" title="LinkedIn">
                     <i class="fab fa-linkedin contact-icon"></i>
-                    <div class="contact-details">
-                        <p>linkedin.com/in/alexandrucornea</p>
-                    </div>
+                </a>
+                <a href="Alexandru_Cornea.pdf" download class="contact-item" title="Download CV">
+                    <span class="contact-icon" style="font-size: 14px; font-family: inherit;">CV</span>
                 </a>
             </div>
         </div>
