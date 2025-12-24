@@ -212,11 +212,6 @@
 
         #qrcode {
             display: inline-block;
-            filter: grayscale(1);
-        }
-
-        [data-theme="dark"] #qrcode {
-            filter: grayscale(1) invert(1);
         }
 
         footer {
@@ -235,7 +230,7 @@
             .business-card {
                 padding: 40px 24px;
                 border: 1px solid var(--border);
-                margin-top: 40px;
+                margin-top: 60px;
             }
 
             .action-buttons {
@@ -290,33 +285,48 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // Generate QR Code
-        new QRCode(document.getElementById("qrcode"), {
-            text: "https://linkedin.com/in/alexandrucornea",
-            width: 150,
-            height: 150,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-
         // Theme Handling
-        const body = document.body;
+        const root = document.documentElement;
         const themeToggleIcon = document.querySelector('.theme-toggle i');
+
+        function generateQRCode() {
+            const qrcodeContainer = document.getElementById("qrcode");
+            // Clear existing QR code
+            qrcodeContainer.innerHTML = '';
+
+            // Determine colors based on current theme
+            const isDark = root.getAttribute('data-theme') === 'dark' ||
+                (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+            const colorDark = isDark ? "#ffffff" : "#000000";
+            const colorLight = isDark ? "#000000" : "#ffffff";
+
+            // Generate new QR code with appropriate colors
+            new QRCode(qrcodeContainer, {
+                text: "https://linkedin.com/in/alexandrucornea",
+                width: 150,
+                height: 150,
+                colorDark: colorDark,
+                colorLight: colorLight,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
 
         function setTheme(theme) {
             if (theme === 'dark') {
-                body.setAttribute('data-theme', 'dark');
+                root.setAttribute('data-theme', 'dark');
                 themeToggleIcon.classList.remove('fa-moon');
                 themeToggleIcon.classList.add('fa-sun');
             } else if (theme === 'light') {
-                body.setAttribute('data-theme', 'light');
+                root.setAttribute('data-theme', 'light');
                 themeToggleIcon.classList.remove('fa-sun');
                 themeToggleIcon.classList.add('fa-moon');
             } else {
-                body.removeAttribute('data-theme');
+                root.removeAttribute('data-theme');
                 updateIconForSystemTheme();
             }
+            // Regenerate QR code with new theme colors
+            generateQRCode();
         }
 
         function updateIconForSystemTheme() {
@@ -330,7 +340,7 @@
         }
 
         function toggleTheme() {
-            const currentTheme = body.getAttribute('data-theme');
+            const currentTheme = root.getAttribute('data-theme');
             const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
             if (currentTheme === 'dark') {
@@ -343,17 +353,29 @@
             }
         }
 
+        // Immediately detect and apply system theme (runs synchronously before DOMContentLoaded)
+        if (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            root.setAttribute('data-theme', 'dark');
+            themeToggleIcon.classList.remove('fa-moon');
+            themeToggleIcon.classList.add('fa-sun');
+        }
+
         // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            if (!body.getAttribute('data-theme')) {
+            if (!root.getAttribute('data-theme')) {
                 updateIconForSystemTheme();
+                generateQRCode();
             }
         });
 
-        // Initialize icon
-        if (!body.getAttribute('data-theme')) {
-            updateIconForSystemTheme();
-        }
+        // Initialize icon and QR code
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!root.getAttribute('data-theme')) {
+                updateIconForSystemTheme();
+            }
+            // Small delay to ensure theme is applied before QR generation
+            setTimeout(generateQRCode, 10);
+        });
     </script>
 </body>
 
