@@ -1,0 +1,77 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.com.alexandru-cornea.businesscard",
+  "serialNumber": "001",
+  "teamIdentifier": "REPLACE_WITH_TEAM_ID",
+  "webServiceURL": "",
+  "authenticationToken": "",
+  "organizationName": "Alexandru Cornea",
+  "description": "Digital Business Card",
+  "foregroundColor": "rgb(0, 0, 0)",
+  "backgroundColor": "rgb(255, 255, 255)",
+  "labelColor": "rgb(120, 120, 120)",
+  "logoText": "ALEXANDRU CORNEA",
+  "barcodes": [
+    {
+      "format": "PKBarcodeFormatQR",
+      "message": "https://www.alexandru-cornea.com",
+      "messageEncoding": "iso-8859-1",
+      "altText": "www.alexandru-cornea.com"
+    }
+  ],
+  "generic": {
+    "primaryFields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "value": "Alexandru Cornea"
+      }
+    ],
+    "secondaryFields": [
+      {
+        "key": "uae_phone",
+        "label": "UAE Mobile",
+        "value": "+971 505 740 512"
+      },
+      {
+        "key": "ro_phone",
+        "label": "RO Mobile",
+        "value": "+40 758 492 633"
+      }
+    ],
+    "auxiliaryFields": [
+      {
+        "key": "email",
+        "label": "Email",
+        "value": "contact@alexandru-cornea.com"
+      },
+      {
+        "key": "linkedin",
+        "label": "LinkedIn",
+        "value": "alexandrucornea"
+      }
+    ],
+    "backFields": [
+      {
+        "key": "bio",
+        "label": "About",
+        "value": "I specialize in turning extreme technical complexity into disciplined, scalable execution."
+      },
+      {
+        "key": "website",
+        "label": "Website",
+        "value": "https://www.alexandru-cornea.com"
+      },
+      {
+        "key": "full_linkedin",
+        "label": "LinkedIn URL",
+        "value": "https://linkedin.com/in/alexandrucornea"
+      },
+      {
+        "key": "quote",
+        "label": "Philosophy",
+        "value": "Order creates leverage, and change creates opportunity."
+      }
+    ]
+  }
+}
